@@ -1,4 +1,3 @@
-//código do Angelo 01
 var readline = require("readline-sync");
 
 let tasks = [];
@@ -11,4 +10,4 @@ function addTask(newTask) {
 let newTask = readline.question("Adicione uma tarefa a sua lista: ");
 console.log(addTask(newTask));
 
-console.log(showTasks(tasks));
+console.log(tasks);
