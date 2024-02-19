@@ -5,10 +5,10 @@ let tasks = [];
 
 function addTask(newTask) {
   tasks.push(newTask);
-  return "Tarefa " + `"${newTask}"` + " adicionada com sucesso!";
+  return "Task " + `"${newTask}"` + " successfully added!";
 }
 
-let newTask = readline.question("Adicione uma tarefa a sua lista: ");
+let newTask = readline.question("Add a task to your list: ");
 console.log(addTask(newTask));
 
 console.log(showTasks(tasks));
@@ -17,7 +17,7 @@ console.log(showTasks(tasks));
 
 function editTasks(array, indices, editedTasks) {
   if (indices.length !== editedTasks.length) {
-    console.log("Indices and editedTasks must have the same length");
+    console.log("Invalid ID. Please try again");
     return array;
   } else {
     for (let i = 0; i < indices.length; i++) {
@@ -48,4 +48,32 @@ function showTasks(tasks) {
 
 /*
 showTasks(tasks);
+*/
+
+//código do Arthur 01 - Remove task
+function removeTask(array, element) {
+  const index = array.indexOf(element);
+  if (index !== -1) {
+    array.splice(index, 1);
+  }
+  return array;
+}
+/* exemplo:
+   let tasks = [1,2,3,4];
+   let tasksToRemove = 3;
+   tasks = removeTask(tasks, tasksToRemove);
+   console.log(tasks);
+*/
+
+//código do Arthur 02
+function findTask(array, index) {
+  if (index >= 0 && index < array.length) {
+    console.log(array[index]);
+  } else {
+    console.log("Task index not found.");
+  }
+}
+/* exemplo:
+let tasks = ["Clean my bedroom", "Code tank", "Buy meat"];
+findTask(tasks, 1);
 */
