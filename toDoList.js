@@ -3,16 +3,41 @@ var readline = require("readline-sync");
 
 let tasks = [];
 
-function addTask(newTask) {
-  tasks.push(newTask);
-  return "Task " + `"${newTask}"` + " successfully added!";
+function start() {
+  let action = readline.question(
+    "Please choose an option to organize your life: \n  1. Add task \n  2. Edit task \n  3. Show to do list \n  4. Remove task \n"
+  );
+  switch (action) {
+    case "1":
+      console.log(addTask());
+      break;
+    case "2":
+      console.log(editTasks());
+      break;
+    case "3":
+      console.log(showTasks());
+      break;
+    case "4":
+      console.log(removeTask());
+      break;
+    default:
+      console.error("Invalid option. Please choose an option between 1 and 4.");
+      break;
+  }
 }
 
-let newTask = readline.question("Add a task to your list: ");
-console.log(addTask(newTask));
+start();
 
-console.log(showTasks(tasks));
+function backToStart() {
+  start();
+}
 
+function addTask() {
+  let newTask = readline.question("Add a task to your list: ");
+  tasks.push(newTask);
+  console.log("Task " + `"${newTask}"` + " successfully added!");
+  backToStart();
+}
 // Código Júlia 01 - Edit task
 
 function editTasks(array, indices, editedTasks) {
