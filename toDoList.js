@@ -1,4 +1,4 @@
-//código do Angelo 01 - Add task
+// Código do Angelo 01 - Add task
 var readline = require("readline-sync");
 
 let tasks = [];
@@ -49,7 +49,7 @@ function addTask() {
   console.log("Task " + `"${newTask}"` + " successfully added!");
 }
 
-// Código Júlia 01 - Edit task
+// Código da Júlia 01 - Edit task
 function editTask(){
 
   let taskToEdit = readline.question("Enter the index of the task you want to edit: ");
@@ -82,7 +82,7 @@ function showTasks(tasks) {
   console.table(tasksToShow, ["tasks"]);
 }
 
-// Função de remoção de tarefa
+// Código do Arthur 01 - Remove tasks
 function removeTask() {
   let taskToRemove = readline.question("Enter the index of the task you want to remove: ");
   taskToRemove = parseInt(taskToRemove);
@@ -94,7 +94,7 @@ function removeTask() {
   console.log(`Task "${removedTask}" successfully removed!`);
 }
 
-// Função para encontrar uma tarefa
+// Código do Arthur 02 - Find tasks
 function findTask() {
   let indexToFind = readline.question("Enter the index of the task you want to find: ");
   indexToFind = parseInt(indexToFind);
