@@ -50,8 +50,24 @@ function addTask() {
 }
 
 // Código Júlia 01 - Edit task
-function editTask() {
-  // Implemente a função de edição de tarefa aqui
+function editTask(){
+
+  let taskToEdit = readline.question("Enter the index of the task you want to edit: ");
+  let index = parseInt(taskToEdit);
+
+  if(index <= tasks.length - 1){
+
+    let editedTask = readline.question("Enter the new task: ");
+
+    let oldTask = tasks[index];
+    tasks[index] = editedTask;
+
+    console.log(`'${oldTask}' was changed to new task '${editedTask}'.`);
+  }
+
+  else {
+    console.log("Invalid index. Please enter a valid index.");
+  }
 }
 
 // Código da Julia 02 - Show tasks
