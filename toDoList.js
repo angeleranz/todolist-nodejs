@@ -5,24 +5,39 @@ let tasks = [];
 
 function start() {
   let action = readline.question(
-    "Please choose an option to organize your life: \n  1. Add task \n  2. Edit task \n  3. Show to do list \n  4. Remove task \n"
+      "Please choose an option to organize your life: \n   1. Add task \n   2. Edit task \n   3. Show to do list \n   4. Remove task \n   5. Find task \n   6. Exit \n"
   );
   switch (action) {
     case "1":
-      console.log(addTask());
+      addTask();
       break;
     case "2":
-      console.log(editTasks());
+      editTask();
       break;
     case "3":
-      console.log(showTasks());
+      showTasks(tasks);
       break;
     case "4":
-      console.log(removeTask());
+      removeTask();
+      break;
+    case "5":
+      findTask();
+      break;
+    case "6":
+      console.log("Exiting...");
+      exitProgram = true;
+      setTimeout(() => {
+        process.exit();
+      }, 1000);
       break;
     default:
-      console.error("Invalid option. Please choose an option between 1 and 4.");
+      console.error(
+          "Invalid option. Please choose an option between  1 and  6."
+      );
       break;
+  }
+  if (action !== "6") {
+    start();
   }
 }
 
@@ -76,13 +91,18 @@ showTasks(tasks);
 */
 
 //código do Arthur 01 - Remove task
-function removeTask(array, element) {
-  const index = array.indexOf(element);
-  if (index !== -1) {
-    array.splice(index, 1);
+function removeTask() {
+  let taskToRemove = readline.question("Enter the index of the task you want to remove: ");
+  taskToRemove = parseInt(taskToRemove);
+  if (isNaN(taskToRemove) || taskToRemove < 0 || taskToRemove >= tasks.length) {
+    console.log("Invalid index. Please enter a valid index.");
+    return;
   }
-  return array;
+  let removedTask = tasks.splice(taskToRemove, 1)[0]; // Remover a tarefa e armazenar seu valor
+  console.log(`Task "${removedTask}" successfully removed!`);
+  start(); // Voltar para o menu
 }
+
 /* exemplo:
    let tasks = [1,2,3,4];
    let tasksToRemove = 3;
@@ -91,13 +111,18 @@ function removeTask(array, element) {
 */
 
 //código do Arthur 02
-function findTask(array, index) {
-  if (index >= 0 && index < array.length) {
-    console.log(array[index]);
-  } else {
-    console.log("Task index not found.");
+function findTask() {
+  let indexToFind = readline.question("Enter the index of the task you want to find: ");
+  indexToFind = parseInt(indexToFind);
+  if (isNaN(indexToFind) || indexToFind < 0 || indexToFind >= tasks.length) {
+    console.log("Invalid index. Please enter a valid index.");
+    return;
   }
+  console.log("Task found:");
+  console.log(tasks[indexToFind]);
+  start(); // Voltar para o menu
 }
+
 /* exemplo:
 let tasks = ["Clean my bedroom", "Code tank", "Buy meat"];
 findTask(tasks, 1);
